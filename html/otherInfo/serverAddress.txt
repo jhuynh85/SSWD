@@ -1,0 +1,11 @@
+From Joseph:
+
+Here's the info to connect to my AWS server. I've also attached the .pem (for FileZilla) and .ppk (for Putty) files:
+
+Server address: http://54.193.46.136/
+Username: ec2-user
+
+To access the MySQL database: http://54.193.46.136/phpmyadmin/
+Username: sswd-admin
+Password: admin
+
