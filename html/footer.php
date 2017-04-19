@@ -17,8 +17,10 @@ footer {
 
 <body>
 <div class="clearfix"></div>
-<footer>
-  <p>Copyright &copy; VF 2000-2017</p>
+<footer>  
+  <?php
+echo "<p>Copyright &copy; 1999-" . date("Y") . " VF.com</p>";
+?>
 </footer>
 </body>
 </html>
