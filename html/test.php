@@ -1,7 +1,7 @@
 <?php
 	require 'stdlib.php';
 
-	$pass = 'jhuynh85';
+	$pass = 'sesame';
 	$hash_cost_log2 = 8;
 	$hash_portable = FALSE;
 

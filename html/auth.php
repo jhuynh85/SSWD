@@ -23,7 +23,7 @@
         //values (:pid, :uid, :rating, :comment)";
 
         //Get data from DB
-		$query = "SELECT password FROM Customer WHERE username=:username";
+		$query = "SELECT password FROM users WHERE username=:username";
 
         $arrayParams = array(':username' => $username);
 
