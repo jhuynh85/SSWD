@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Message</title>
+  <title>Message for Login</title>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/animate.css" rel="stylesheet">
   <link href="css/custom.css" rel="stylesheet" type="text/css">
@@ -16,13 +16,11 @@ h1{text-align:left;}
 <body>
 <div><a class="navbar-brand animated shake" href="products.php"><img src="images/VF2.png" alt="VF logo" width="40"></a> </div>
   <div class="message">
-    <h1>Forgot your password?</h1>
-    <p>Enter the email address for your account & we'll email you a link to reset your password.</p>
-    <h3>Email</h3>
-    <input type="text" name="email" placeholder="Enter your email address" required />
-    <p>
-      <button type="submit" class="btn btn-danger">Submit</button>
-    </p>
+    <h1>Welcome valued customer!</h1>
+    <h3>Please <a href="products.php">continue shopping here</a>
+    <br><br>
+    	 or <a href="checkout.php">checkout here.</a>
+    </h3>    
   </div>
 </body>
 </html>
