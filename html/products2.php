@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VF Products</title>
+  <title>VF Products 2</title>
   <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
   <link href="css/custom.css" rel="stylesheet" type="text/css">  
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -47,7 +47,7 @@
         </div>
         <div class="row">
           <div class="col-sm-4 col-lg-4 col-md-4">
-            <div class="thumbnail"> <img src="images/JPEG/T-shirt_01.jpg" alt="">
+            <div class="thumbnail"> <img src="images/JPEG2/hat_01.jpg" alt="" width="200">
               <div class="caption">
                 <h4 class="pull-right">$59.99</h4>
                 <h4><a href="item.php">Item 1</a></h4>
@@ -60,7 +60,7 @@
             </div>
           </div>
           <div class="col-sm-4 col-lg-4 col-md-4">
-            <div class="thumbnail"> <img src="images/JPEG/T-shirt_02.jpg" alt="">
+            <div class="thumbnail"> <img src="images/JPEG2/hat_02.jpg" alt="" width="200">
               <div class="caption">
                 <h4 class="pull-right">$66.99</h4>
                 <h4><a href="#">Item 2</a> </h4>
@@ -73,7 +73,7 @@
             </div>
           </div>
           <div class="col-sm-4 col-lg-4 col-md-4">
-            <div class="thumbnail"> <img src="images/JPEG/T-shirt_03.jpg" alt="">
+            <div class="thumbnail"> <img src="images/JPEG2/hat_03.jpg" alt="" width="200">
               <div class="caption">
                 <h4 class="pull-right">$44.99</h4>
                 <h4><a href="#">Item 3</a> </h4>
@@ -86,7 +86,7 @@
             </div>
           </div>
           <div class="col-sm-4 col-lg-4 col-md-4">
-            <div class="thumbnail"> <img src="images/JPEG/T-shirt_04.jpg" alt="">
+            <div class="thumbnail"> <img src="images/JPEG2/hat_04.jpg" alt="" width="200">
               <div class="caption">
                 <h4 class="pull-right">$55.99</h4>
                 <h4><a href="#">Item 4</a> </h4>
@@ -99,7 +99,7 @@
             </div>
           </div>
           <div class="col-sm-4 col-lg-4 col-md-4">
-            <div class="thumbnail"> <img src="images/JPEG/T-shirt_05.jpg" alt="">
+            <div class="thumbnail"> <img src="images/JPEG2/hat_05.jpg" alt="" width="200">
               <div class="caption">
                 <h4 class="pull-right">$57.99</h4>
                 <h4><a href="#">Item 5</a> </h4>
@@ -112,7 +112,7 @@
             </div>
           </div>
           <div class="col-sm-4 col-lg-4 col-md-4">
-            <div class="thumbnail"> <img src="images/JPEG/T-shirt_06.jpg" alt="">
+            <div class="thumbnail"> <img src="images/JPEG2/hat_06.jpg" alt="" width="200">
               <div class="caption">
                 <h4 class="pull-right">$52.19</h4>
                 <h4><a href="#">Item 6</a> </h4>

@@ -8,7 +8,9 @@ body {
 }
 
 #item {
-		margin-top: 150px;
+    width:80%;    
+		margin: 150px 0 0 40px;
+            
 } 
 
 #item .ratings {
@@ -29,7 +31,7 @@ li.active {
 		justify-content: center;
 		align-items: center;
 		border-right: 1px solid #f6f6f6;
-		padding-right: 40px;
+		padding: 40px;
 		margin-top: 40px;
 }
 
@@ -38,7 +40,7 @@ li.active {
 		font-size: 1.1em;
 		font-weight: 600;
 		display: inline-flex;
-		margin: 40px auto 0 0;
+		margin: 40px 0 0 40px;
 		padding: 0;
 }
 

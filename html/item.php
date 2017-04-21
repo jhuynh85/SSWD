@@ -6,8 +6,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <!--<link href="css/custom.css" rel="stylesheet" type="text/css">-->
   <link href="css/item.css" rel="stylesheet" type="text/css">
-  
-</head>
+ </head>
 
 <body>
 <p>
@@ -17,7 +16,7 @@
 </p>
   <div id="item">
     <div class="row">
-      <div class="col-xs-4 item-photo"> <img style="max-width:100%;" src="images/T-shirt_01.jpg" alt=""> </div>
+      <div class="col-xs-4 item-photo"> <img style="min-width:80%;" src="images/JPEG/T-shirt_01.jpg" alt=""> </div>
       <div class="col-xs-5" style="border:0px solid #eee">
         <h3>Item 1</h3>
         <h5 style="color:#337ab7">Availability: in stock</h5>
@@ -55,15 +54,15 @@
         </div>
       </div>
       <div class="col-xs-10">
-        <ul class="menu-items">
+        <ul class="menu-items" style="padding: 15px 40px;">
           <li class="active">Description</li>
           <li><a href="#">Shipping</a></li>
           <li><a href="#">Returns</a></li>
           <li><a href="#">Reviews</a></li>
         </ul>
-        <div style="width:100%;border-top:1px solid silver">
+        <div style="width:100%;border-top:1px solid silver;margin-left:40px;">
           <p style="padding:15px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse mauris sem, finibus et quam vel, placerat condimentum tellus. Nunc vehicula dolor metus, vitae condimentum justo iaculis ac. Curabitur porta enim sed arcu congue scelerisque. Nam eget eros ullamcorper, eleifend est in, posuere lectus.</p>
-          <ul>
+          <ul style="padding: 15px 40px;">
             <li>Orci varius natoque penatibus et magnisurient</li>
             <li>Mauris non diam non lacus ornare sodales</li>
             <li>Class aptent taciti sociosqu ad litora</li>
@@ -75,7 +74,7 @@
       </div>
     </div>
   </div>
-    
+</div>    
 <p>
 <?php
     include_once('footer.php');
