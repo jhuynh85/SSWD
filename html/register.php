@@ -23,7 +23,7 @@
 <div id="register">
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-            <form action="#" method="POST">
+            <form id="regForm" action="create_user.php" method="POST">
                 <h1>Please Sign Up</h1>
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-6">
@@ -68,13 +68,13 @@
                 <button type="button" class="btn btn-danger" data-color="info" tabindex="7">I Agree</button>
                 <input type="checkbox" name="t_and_c" id="t_and_c" class="hidden"  value="1" required>
                 </span> </div>
-                    <div class="col-xs-8 col-sm-9 col-md-9"> By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="#t_and_c_m" data-toggle="modal" data-target="#t_and_c_m" style="color:red;">Terms and Conditions</a> set out by this site, including our Cookie Use. </div>
+                    <div class="col-xs-8 col-sm-9 col-md-9">By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="#t_and_c_m" data-toggle="modal" data-target="#t_and_c_m" style="color:red;">Terms and Conditions</a> set out by this site, including our Cookie Use. </div>
                 </div>
 
                 <hr class="colorgraph">
                 <div class="row">
                     <div class="col-xs-12 col-md-6">
-                        <input type="button" id="register_button" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7">
+                        <input type="submit" id="register_button" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7">
                     </div>
                     <div class="col-xs-12 col-md-6"><a href="login.php" class="btn btn-success btn-block btn-lg">Login</a></div>
                 </div>
@@ -120,13 +120,14 @@
 </p>
 
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.form.min.js"></script>
 <script src="js/reg.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function() {
         // Hide loader image
         $("#loader").hide();
-
+/*
         $("#register_button").click(function(){
             // Show loading image
             $("#loader").show();
@@ -165,6 +166,51 @@
                     });
             } else {
                 alert("Passwords do not match!");
+            }
+        });
+    });
+ */
+
+        var password = $("#password");
+        var confirm_password = $("#password_confirmation");
+        var valid = false;
+
+        password[0].onchange = validatePassword;
+        confirm_password[0].onkeyup = validatePassword;
+
+        // Checks whether passwords are the same
+        function validatePassword(){
+            console.log("password1: "+password.val());
+            console.log("password2: "+confirm_password.val());
+            if (password.val() != confirm_password.val()){
+                confirm_password[0].setCustomValidity("Passwords Don't Match");
+                valid = false;
+            } else {
+                confirm_password[0].setCustomValidity('');
+                valid = true;
+            }
+        }
+
+        $('#regForm').ajaxForm({
+            dataType : 'json',
+            beforeSubmit: function(){
+                return valid;
+            },
+            success : function (data) {
+                // Hide loader again after processing done
+                $("#loader").hide();
+                // User inserted successfully
+                if (data == 1) {
+                    alert(data + "- User: "+$('#user_name').val()+" inserted successfully!");
+                } else if (data==2){
+                    alert(data+"- Error: Username already exists, please enter a different username.")
+                } else if (data==3){
+                    alert(data+"- Error: Email address already exists, please enter a different email.");
+                }
+                // Other error
+                else {
+                    alert(data+"- Error: User not created!");
+                }
             }
         });
     });

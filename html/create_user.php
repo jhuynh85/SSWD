@@ -66,7 +66,8 @@ try{
         }
     }
 
-    echo $status;
+    header('Content-Type: application/json');
+    echo json_encode($status);
 
 } catch (Exception $error){
     echo $error->getMessage();
