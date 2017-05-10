@@ -48,14 +48,19 @@
             $.post("emailReset.php", {email: v_email})
                 .done(function (data) {
 
-                    var result = JSON.parse(data);
                     // Print status code message
-                    if (result.id === 1 || result.id === 2 || result.id === 3) {
-                        alert(result.id + ": "+result.message);
+                    if (data == 1 ){
+                        alert("1: Password has been reset. Please check your email!");
+                    }
+                    else if (data == 2 ){
+                        alert("2: There was a problem sending the email, please try again!");
+                    }
+                    else if (data == 3 ){
+                        alert("3: Email not found!");
                     }
                     // Other error
                     else {
-                        alert(result.id + ": "+result.message);
+                        alert("4: Error - "+data);
                     }
                 });
         });

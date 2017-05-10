@@ -5,8 +5,12 @@
  * Date: 5/2/2017
  * Time: 8:27 PM
  */
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+
 require 'stdlib.php';
 require 'PHPMailerAutoload.php';
+require_once 'random.php';
 
 $email = $_POST['email'];
 
@@ -17,6 +21,8 @@ try{
     $query = "SELECT * FROM users WHERE emailAddress=:email";
     $arrayParams = array(':email' => $email);
     $results = $db->PDOquery($query, $arrayParams, true);
+
+    $user = null;
 
     foreach ($results as $row) {
         $user = $row;
@@ -47,13 +53,13 @@ try{
         $mail->Body = "The password for user '".$user['userName']."' has been reset.  The new password is ".$passStr;
 
         if (!$mail->send()) {
-            echo json_encode(array('id' => 2, 'message' => 'Mailer error: ' . $mail->ErrorInfo));
+            echo 2;
         } else {
-            echo json_encode(array('id' => 1, 'message' => 'Message has been sent.'));
+            echo 1;
         }
 
     } else {
-        echo json_encode(array('id' => 3, 'message' => 'Email not found!'));
+        echo 3;
     }
 
 } catch (Exception $error){
