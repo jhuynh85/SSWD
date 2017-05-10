@@ -1,38 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+}
 body {
-    font-size : 14px;
+    font-size : 1em;
+    line-height: 2.5;
     background-color: #f2f6f9;
 }
-ul {
-    list-style-type: none;
+p {
+    margin: 20px;
 }
-a:hover {
-    text-decoration: none;
+.container {
+    width: 80%;
+    margin: 0 auto;
 }
 .container.text-center {
     padding: 0 32px;
 }
-.col-md-5.col-sm-12 {
-    padding: 0;
-}
-.col-md-5.col-sm-12 h1 {
-    color: #595c5f;
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 30px;
-    text-align: left;
-}
-.col-md-5.col-sm-12 p {
-    color: #898e92;
-    line-height: 1.5;
-    max-width: 400px;
-    text-align: justify;
-}
-.bigcart {
-    background: url(../images/cart.png) no-repeat;
-    background-position: 0px 11px;
-    width: 155px;
-    height: 120px;
-    margin: 40px 0 40px 60px;
+ul {
+    list-style-type: none;
 }
 .col-md-7.col-sm-12 {
     padding-left: 50px;
@@ -40,32 +26,25 @@ a:hover {
 }
 .row {
     box-shadow: 0 1px 0 #e1e5e8;
-    padding-bottom : 0;
-    padding-left: 15px;
+    padding : 0 15px;
     background-color: #ffffff;
     margin-bottom: 11px;
 }
 .row span {
     padding: 20px 0 6px 0;
 }
-.list-inline {
-    padding: 20px 10px;
-}
-/* why doesn't work? */
 .columnCaptions {
     color: #7e93a7;
     font-size: 12px;
     text-transform: uppercase;
-    padding: 0;
     box-shadow: 0 0 0;
     background-color: #f2f6f9;
-    margin-top: 40px;
 }
 .columnCaptions span:first-child {
     padding-left: 8px;
 }
 .columnCaptions span {
-    padding: 20px 20px 0 0;
+    padding: 0 21px 0 0;
 }
 .columnCaptions span:last-child {
     float: right;
@@ -87,7 +66,29 @@ a:hover {
     padding-left: 7px;
 }
 .popbtn {
-    background-color: #e6edf3;
+    margin-left: 25px;
+    height: 63px;
+    width: 40px;
+    padding: 32px 0 0 14px !important;
+    float: right;
+    cursor: pointer;
+}
+.itemName {
+    color: #727578;
+    font-size : 16px;
+    font-weight: bold;
+    float: left;
+    padding-left: 25px;
+}
+.quantity {
+    color: #4ea6bc;
+    font-size : 18px;
+    font-weight: bold;
+    float : left;
+    width: 42px;
+    padding-left: 7px;
+}
+.popbtn {
     margin-left: 25px;
     height: 63px;
     width: 40px;
@@ -103,37 +104,24 @@ a:hover {
     border-top: 6px solid #858e97;
 }
 .price {
-    color: #f06953;
+    color: #4ea6bc; /*#f06953*/
     font-size : 18px;
     font-weight: bold;
     float: right;
 }
-.clearall {
-    clear: both;
-}
 .totals {
     background-color: #f2f6f9;
-    padding-left: 20px;
 }
-.totals .price {
+.totals span {
+    padding: 10px 15px 10px 0;
+}
+.totals span.price {
     float: right;
-    right:50px;
+    color: #f06953;
 }
- 
-.checkout {
-    float: right;
-    padding: 0;
-    margin-top: 10px;
-    padding-left: 5px;
-    cursor: pointer;
+.totals .itemName {
+    margin-top: 1px;
 }
-.checkout a {
-    font-size: 1.5em;
-    font-weight: bold;
-    border-radius: 5px;
-    padding: 0 30px 10px 30px;
-}
-.checkout btn-danger{padding-top:10px;}
 .popover {
     border-radius: 3px;
     box-shadow: 0 0 1px 1px rgba(0,0,0,0.2);
@@ -148,9 +136,6 @@ a:hover {
     font-size: 24px;
     padding: 0;
 }
-.glyphicon-credit-card {
-    margin: 10px 20px 10px 0;
-}
 .glyphicon-pencil {
     color: #858e97;
     margin: 7px 12px 7px 10px;
@@ -158,6 +143,9 @@ a:hover {
 .glyphicon-remove {
     color: #f06953;
     margin-right: 10px;
+}
+.checkout {
+    float: right;
 }
  @media (max-width: 992px) {
 .container.text-center {
@@ -211,7 +199,7 @@ a:hover {
     padding-left: 15px;
 }
 .columnCaptions span {
-    padding: 10px 21px 0 0;
+    padding: 0 21px 0 0;
 }
 .columnCaptions span:last-child {
     float: right;

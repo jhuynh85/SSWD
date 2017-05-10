@@ -37,7 +37,7 @@ h1, h2 {
 }
 
 .thumbnail {
-		padding: 0;
+		padding: 0;    
 }
 
 .thumbnail .caption-full {
@@ -141,7 +141,7 @@ textarea {
 #checkout form {
 		width: 100%;
 }
-
+ 
 .clearfix {
 		clear: both;
 }

@@ -124,52 +124,10 @@
 <script src="js/reg.js"></script>
 
 <script type="text/javascript">
+    // Hide loader image
+    $("#loader").hide();
+
     $(document).ready(function() {
-        // Hide loader image
-        $("#loader").hide();
-/*
-        $("#register_button").click(function(){
-            // Show loading image
-            $("#loader").show();
-
-            // Check if passwords match
-            var pass1 = $("#password").val();
-            var pass2 = $("#password_confirmation").val();
-
-            if (pass1==pass2) {
-                var v_firstname = $("#first_name").val();
-                var v_lastname = $("#last_name").val();
-                var v_email = $("#email").val();
-                var v_username = $("#user_name").val();
-                var v_pass = $("#password").val();
-
-                $.post("create_user.php", { first_name: v_firstname,
-                    last_name: v_lastname,
-                    email: v_email,
-                    user_name: v_username,
-                    pass: v_pass})
-                    .done(function (data) {
-                        // Hide loader again after processing done
-                        $("#loader").hide();
-                        // User inserted successfully
-                        if (data == 1) {
-                            alert(data + "- User: "+v_username+" inserted successfully!");
-                        } else if (data==2){
-                            alert(data+"- Error: Username already exists, please enter a different username.")
-                        } else if (data==3){
-                            alert(data+"- Error: Email address already exists, please enter a different email.");
-                        }
-                        // Other error
-                        else {
-                            alert(data+"- Error: User not created!");
-                        }
-                    });
-            } else {
-                alert("Passwords do not match!");
-            }
-        });
-    });
- */
 
         var password = $("#password");
         var confirm_password = $("#password_confirmation");
@@ -180,8 +138,6 @@
 
         // Checks whether passwords are the same
         function validatePassword(){
-            console.log("password1: "+password.val());
-            console.log("password2: "+confirm_password.val());
             if (password.val() != confirm_password.val()){
                 confirm_password[0].setCustomValidity("Passwords Don't Match");
                 valid = false;
@@ -194,6 +150,10 @@
         $('#regForm').ajaxForm({
             dataType : 'json',
             beforeSubmit: function(){
+                if (valid) {
+                    // Show loading image
+                    $("#loader").show();
+                }
                 return valid;
             },
             success : function (data) {

@@ -5,7 +5,7 @@ $first_name = $_POST['first_name'];
 $last_name = $_POST['last_name'];
 $user_name = $_POST['user_name'];
 $email = $_POST['email'];
-$pass = $_POST['pass'];
+$pass = $_POST['password'];
 
 $hash_cost_log2 = 8;
 $hash_portable = FALSE;
@@ -13,11 +13,6 @@ $hash_portable = FALSE;
 //call phppass
 $hasher = new PasswordHash($hash_cost_log2, $hash_portable);
 
-
-//get hash from database + uid, username, direct permission, access
-// SELECT * FROM users WHERE email= :email LIMIT 1;
-// $results = dbquery($query);
-// foreach ($results as $row){
 try{
     $db = new DB(); //CREATE INSTANCE OF DB CLASS
     $status = 0; // Initialize status code
