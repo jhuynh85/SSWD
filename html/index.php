@@ -23,7 +23,8 @@ h3{text-align:center; padding-bottom:20px;}
 <body>
   
   <?php
-    include_once('header.php');    
+    include_once('header.php');
+    include_once('setLogInState.php');
 ?>
  
 <div class="clearfix"></div>

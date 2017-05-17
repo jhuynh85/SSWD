@@ -1,6 +1,7 @@
 <?php
     require 'stdlib.php';
 
+    session_start();
     $username = $_POST['username'];
     $pass = $_POST['pass'];
 
@@ -39,8 +40,14 @@
             $valid = $hasher->CheckPassword($pass, $db_hash);
 
             if ($valid){
+                // Set session logged-in state and username
+                $_SESSION["logged_in"] = true;
+                $_SESSION["userName"] = $username;
+                session_write_close();
                 echo 1;
             } else {
+                $_SESSION["logged_in"] = false;
+                session_write_close();
                 echo 2;
             }
         } else {

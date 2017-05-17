@@ -26,7 +26,8 @@ p {margin: 10px auto 50px;}
 <body>
   <p>
     <?php
-    include_once('header.php');    
+    include_once('header.php');
+    include_once('setLogInState.php');
 ?>
 </p>
 <div id="about">

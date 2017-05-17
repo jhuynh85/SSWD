@@ -18,7 +18,8 @@
 <body>
   <p>
   <?php
-    include_once('header.php');    
+    include_once('header.php');
+    include_once('setLogInState.php');
 ?>
 </p>
   <div class="clearfix"></div>

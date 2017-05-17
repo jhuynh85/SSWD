@@ -27,7 +27,7 @@
 </div>
 <div class="message">
     <h1>Forgot your password?</h1>
-    <p>Enter the email address for your account & we'll email you a link to reset your password.</p>
+    <p>Enter the email address for your account & we'll email you a new password.</p>
     <form id="emailForm">
         <div>
             <label for="email">Email</label><br>
