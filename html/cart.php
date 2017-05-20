@@ -1,58 +1,165 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Shopping Cart</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
- 
-  <link rel="stylesheet" type="text/css" href="css/cart.css"/>
-   
+    <meta charset="UTF-8">
+    <title>Responsive Shopping Cart</title>
+    <link rel="stylesheet" href="css/cart.css">
+    <style type="text/css">
+        body {
+            margin-top: 60px;
+        }
+
+        .navbar-brand {
+            margin-left: 10px;
+        }
+
+        h1 {
+            margin: 50px;
+        }
+    </style>
 </head>
 
 <body>
-<p>
-  <?php
-    include_once('header.php');    
-?>
-</p>
- 
-  <div class="container text-center">
-    <div class="col-md-5 col-sm-12">
-      <div class="bigcart"></div>
-      <h1>Your Shopping Cart</h1>
-      <p>Free shipping with $99+ purchase in the U.S.!</p>
-    </div>
-    <div class="col-md-7 col-sm-12 text-left">
-      <ul>
-        <li class="row list-inline columnCaptions"> <span>QTY</span> <span>ITEM</span> <span>Price</span> </li>
-        <li class="row"> <span class="quantity">2</span> <span class="itemName">Hat</span> <span class="popbtn"><a class="arrow"></a></span> <span class="price">$15.00</span> </li>
-        <li class="row"> <span class="quantity">3</span> <span class="itemName">T-shirt</span> <span class="popbtn"><a class="arrow"></a></span> <span class="price">$20.00</span> </li>
-        <li class="row"> <span class="quantity">2</span> <span class="itemName">Jeans</span> <span class="popbtn"  data-parent="#asd" data-toggle="collapse" data-target="#demo"><a class="arrow"></a></span> <span class="price">$50.00</span> </li>
-        <div class="clearfix"></div>
-        <li class="row totals"> <span class="itemName">Subtotal:</span> <span class="price">$190.00</span> </li>
-        <li class="row totals"> <span class="itemName">Estimated Tax:</span> <span class="price">$17.10</span> </li>
-        <li class="row totals"> <span class="itemName">Estimated Shipping:</span> <span class="price">$15.00</span> </li>
-        <li class="row totals"> <span class="itemName">Total:</span> <span class="price">$222.10</span> </li>
-          <div class="checkout"> <a href="checkout.php" class="btn btn-danger btn-lg btn-check">Check Out</a> </div>
-       
-      </ul>
-    </div>
-  </div>
-  
- <p>
 <?php
-    include_once('footer.php');
+session_start();
+include_once('header.php');
+
+// Populate test shopping cart
+$_SESSION["cart"] = array(
+    array(
+        "productName" => "T-shirt_01",
+        "productID" => "1",
+        "quantity" => "2",
+        "listPrice" => "49.99",
+        "description" => "Test description 1",
+        "imagePath" => "images/JPEG/T-shirt_01.jpg"
+    ),
+    array(
+        "productName" => "T-shirt_02",
+        "productID" => "2",
+        "quantity" => "3",
+        "listPrice" => "39.99",
+        "description" => "Test description 2",
+        "imagePath" => "images/JPEG/T-shirt_02.jpg"
+    )
+);
+
+// Get cart session variable
+if (isset($_SESSION["cart"])) {
+    $cart = $_SESSION["cart"];
+} else {
+    $cart = [];
+}
 ?>
-</p> 
-  <!-- The popover content -->
-  
-  <div id="popover" style="display: none"> <a href="#"><span class="glyphicon glyphicon-pencil"></span></a> <a href="#"><span class="glyphicon glyphicon-remove"></span></a> </div>
-  
-  <!-- JavaScript includes --> 
-  
-  <script src="js/jquery-1.11.0.min.js"></script> 
-  <script src="js/bootstrap.min.js"></script> 
-  <script src="js/cart.js"></script>
+
+<div><a class="navbar-brand" href="products.php"><img src="images/VF2.png" alt="VF logo" width="40"></a></div>
+<div class="shopping-cart">
+    <h1>Shopping Cart</h1>
+    <div class="column-labels">
+        <label class="product-image">Image</label>
+        <label class="product-details">Product</label>
+        <label class="product-price">Price</label>
+        <label class="product-quantity">Quantity</label>
+        <label class="product-removal">Remove</label>
+        <label class="product-line-price">Total</label>
+    </div>
+    <div id="products">
+        <div class="product">
+            <div class="product-image"><img src="images/JPEG/T-shirt_01.jpg"></div>
+            <div class="product-details">
+                <div class="product-title">T-shirt 1</div>
+                <p class="product-description">Curabitur varius leo et purus fringilla, a luctus nulla fermentum. Donec
+                    nec
+                    neque rutrum, ultricies nisl vel, sagittis nibh.</p>
+            </div>
+            <div class="product-price">59.99</div>
+            <div class="product-quantity">
+                <input type="number" value="2" min="1">
+            </div>
+            <div class="product-removal">
+                <button class="remove-product">Remove</button>
+            </div>
+            <div class="product-line-price">119.98</div>
+        </div>
+        <div class="product">
+            <div class="product-image"><img src="images/JPEG/T-shirt_03.jpg"></div>
+            <div class="product-details">
+                <div class="product-title">T-shirt 3</div>
+                <p class="product-description">Nullam maximus fermentum ultricies. Nulla at cursus tellus. Morbi
+                    tincidunt
+                    tellus sed imperdiet pellentesque.</p>
+            </div>
+            <div class="product-price">44.99</div>
+            <div class="product-quantity">
+                <input type="number" value="1" min="1">
+            </div>
+            <div class="product-removal">
+                <button class="remove-product">Remove</button>
+            </div>
+            <div class="product-line-price">44.99</div>
+        </div>
+    </div>
+    <div class="totals">
+        <div class="totals-item">
+            <label>Subtotal</label>
+            <div class="totals-value" id="cart-subtotal">164.97</div>
+        </div>
+        <div class="totals-item">
+            <label>Tax (8%)</label>
+            <div class="totals-value" id="cart-tax">13.20</div>
+        </div>
+        <div class="totals-item">
+            <label>Shipping</label>
+            <div class="totals-value" id="cart-shipping">15.00</div>
+        </div>
+        <div class="totals-item totals-item-total">
+            <label>Grand Total</label>
+            <div class="totals-value" id="cart-total">193.17</div>
+        </div>
+    </div>
+    <button class="checkout">
+        <a href="checkout.php">Checkout</a>
+    </button>
+</div>
+<p>
+    <?php
+    include_once('footer.php');
+    ?>
+</p>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="js/cart.js"></script>
+<script>
+    $(document).ready(function () {
+        // Load cart contents
+        var cart = JSON.parse('<?php echo json_encode($cart) ?>');
+
+        // Loop through cart and print out each item
+        for (var i in cart) {
+            var amt = parseFloat(cart[i].listPrice) * parseInt(cart[i].quantity);
+            var elem = $("<div>").addClass("product");
+            var image = $("<div>").addClass("product-image")
+                .append($("<img>").attr("src", cart[i].imagePath));
+            var details = $("<div>").addClass("product-details")
+                .append($("<div>").addClass("product-title").text(cart[i].productName))
+                .append($("<p>").addClass("product-description").text(cart[i].description));
+            var price = $("<div>").addClass("product-price").text(cart[i].listPrice);
+            var quantity = $("<div>").addClass("product-quantity")
+                .append($("<input>").attr({
+                    type: "number",
+                    value: cart[i].quantity,
+                    min: "1"
+                }));
+            var removeBtn = $("<div>").addClass("product-removal")
+                .append($("<button>").addClass("remove-product").text("Remove"));
+            var linePrice = $("<div>").addClass("product-line-price").text(amt);
+
+            elem.append(image, details, price, quantity, removeBtn, linePrice);
+            $("#products").append(elem);
+        }
+
+        console.log(cart);
+    });
+</script>
+
 </body>
 </html>

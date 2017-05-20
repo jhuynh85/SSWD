@@ -8,7 +8,7 @@
 footer {
 		color: inherit;
 		font-size: 0.9em;
-		font-weight:600;
+		font-weight:normal;
 		text-align: center;
 		margin-top: 60px;
 }
