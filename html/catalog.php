@@ -1,3 +1,34 @@
+<?php
+require 'stdlib.php';
+try {
+    $db = new DB(); //CREATE INSTANCE OF DB CLASS
+
+    //Get data from DB
+    $query = "SELECT * FROM categories";
+    $arrayParams = array();
+    $results = $db->PDOquery($query, $arrayParams, true);
+    $categories = $results;
+
+} catch (Exception $error) {
+    echo $error->getMessage();
+}
+
+try {
+    $db = new DB(); //CREATE INSTANCE OF DB CLASS
+
+    $categoryID = filter_input(INPUT_GET, 'categoryID', FILTER_VALIDATE_INT);
+
+    //Get data from DB
+    $query = "SELECT * FROM products WHERE categoryID=:categoryID";
+    $arrayParams = array(':categoryID' => $categoryID);
+    $results = $db->PDOquery($query, $arrayParams, true);
+    $products = $results;
+
+} catch (Exception $error) {
+    echo $error->getMessage();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,49 +47,22 @@
 </head>
 
 <body>
-<p>
-    <?php
-    include_once('header.php');
-    include_once('setLogInState.php');
+<!--  <p>-->
+<?php
+include_once('header.php');
+include_once('setLogInState.php');
+?>
 
-    require 'stdlib.php';
-    try {
-        $db = new DB(); //CREATE INSTANCE OF DB CLASS
-
-        //Get data from DB
-        $query = "SELECT * FROM categories";
-        $arrayParams = array();
-        $results = $db->PDOquery($query, $arrayParams, true);
-        $categories = $results;
-
-    } catch (Exception $error) {
-        echo $error->getMessage();
-    }
-
-    try {
-        $db = new DB(); //CREATE INSTANCE OF DB CLASS
-
-        //Get data from DB        
-        $query = "SELECT * FROM featuredProducts f
-        join products p
-        WHERE f.productID = p.productID";
-        $arrayParams = array();
-        $results = $db->PDOquery($query, $arrayParams, true);
-        $products = $results;
-
-    } catch (Exception $error) {
-        echo $error->getMessage();
-    }
-    ?>
-</p>
 <div class="clearfix"></div>
 <div class="container">
     <div class="row">
+
         <div class="col-md-3">
             <h1 style="color:#900;">VF</h1>
             <div class="list-group">
                 <?php foreach ($categories as $category) : $name = $category['categoryName'];
                     $id = $category['categoryID'];
+                    // $url = $app_path . 'catalog?category_id=' . $id;
                     $url = 'catalog.php?categoryID=' . $id;
 
                     ?>
@@ -67,6 +71,7 @@
                 <?php endforeach; ?>
             </div>
         </div>
+
         <div class="col-md-9">
             <div class="row carousel-holder">
                 <div class="col-md-12">
@@ -87,11 +92,7 @@
                                     class="glyphicon glyphicon-chevron-right"></span> </a></div>
                 </div>
             </div>
-
-            <h2 style="color:#900;">Featured Products</h2>
-
             <div class="row">
-
                 <?php foreach ($products as $product) :
                     $id = $product['productID'];
                     $name = $product['productName'];
@@ -101,7 +102,7 @@
                     $url = 'item.php?productID=' . $id;
                     ?>
                     <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail"><img src=<?php echo $imagePath; ?> alt="">
+                        <div class="thumbnail"><img src="<?php echo $imagePath; ?>" alt="">
                             <div class="caption">
                                 <h4 class="pull-right"><?php echo('$' . $listPrice); ?></h4>
                                 <h4><a href="<?php echo $url ?>"><?php echo $name; ?></a></h4>
@@ -120,19 +121,21 @@
                 <?php endforeach; ?>
             </div>
         </div>
+    </div>
+</div>
 
-        <p>
-            <?php
-            include_once('footer.php');
-            ?>
-        </p>
+<p>
+    <?php
+    include_once('footer.php');
+    ?>
+</p>
 
-        <!-- jQuery -->
-        <script src="js/jquery.js"></script>
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
 
-        <!-- Bootstrap Core JavaScript -->
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/classie.js"></script>
-        <script src="js/search.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/classie.js"></script>
+<script src="js/search.js"></script>
 </body>
 </html>

@@ -47,12 +47,12 @@
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" class="form-control input-md" placeholder="Email Address" tabindex="4" required>
                 </div>
-                
+
                 <div class="form-group">
             <label for="address"> Address</label>
             <input type="address" name="address" id="address" class="form-control input-md" tabindex="5" required />
           </div>
-         
+
           <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6">
           <div class="form-group">
