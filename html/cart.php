@@ -2,19 +2,36 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Responsive Shopping Cart</title>
+    <title>Shopping Cart</title>
     <link rel="stylesheet" href="css/cart.css">
     <style type="text/css">
-        body {
-            margin-top: 60px;
+        #checkoutBtn {
+            cursor: pointer;
         }
 
-        .navbar-brand {
-            margin-left: 10px;
+        .shopping-cart {
+            margin: -2% auto 0;
+            width: 80%;
         }
 
-        h1 {
-            margin: 50px;
+        .shopping-cart h1 {
+            margin: 0 0 50px;
+        }
+
+        .checkout a, .checkout a:hover {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.5em;
+        }
+
+        .checkout a:hover {
+            font-weight: 600;
+        }
+
+        @media screen and (max-width: 500px) {
+            .shopping-cart {
+                margin-top: -40%;
+            }
         }
     </style>
 </head>
@@ -51,8 +68,6 @@ if (isset($_SESSION["cart"])) {
     $cart = [];
 }
 ?>
-
-<div><a class="navbar-brand" href="products.php"><img src="images/VF2.png" alt="VF logo" width="40"></a></div>
 <div class="shopping-cart">
     <h1>Shopping Cart</h1>
     <div class="column-labels">
@@ -64,40 +79,6 @@ if (isset($_SESSION["cart"])) {
         <label class="product-line-price">Total</label>
     </div>
     <div id="products">
-        <div class="product">
-            <div class="product-image"><img src="images/JPEG/T-shirt_01.jpg"></div>
-            <div class="product-details">
-                <div class="product-title">T-shirt 1</div>
-                <p class="product-description">Curabitur varius leo et purus fringilla, a luctus nulla fermentum. Donec
-                    nec
-                    neque rutrum, ultricies nisl vel, sagittis nibh.</p>
-            </div>
-            <div class="product-price">59.99</div>
-            <div class="product-quantity">
-                <input type="number" value="2" min="1">
-            </div>
-            <div class="product-removal">
-                <button class="remove-product">Remove</button>
-            </div>
-            <div class="product-line-price">119.98</div>
-        </div>
-        <div class="product">
-            <div class="product-image"><img src="images/JPEG/T-shirt_03.jpg"></div>
-            <div class="product-details">
-                <div class="product-title">T-shirt 3</div>
-                <p class="product-description">Nullam maximus fermentum ultricies. Nulla at cursus tellus. Morbi
-                    tincidunt
-                    tellus sed imperdiet pellentesque.</p>
-            </div>
-            <div class="product-price">44.99</div>
-            <div class="product-quantity">
-                <input type="number" value="1" min="1">
-            </div>
-            <div class="product-removal">
-                <button class="remove-product">Remove</button>
-            </div>
-            <div class="product-line-price">44.99</div>
-        </div>
     </div>
     <div class="totals">
         <div class="totals-item">
@@ -117,9 +98,7 @@ if (isset($_SESSION["cart"])) {
             <div class="totals-value" id="cart-total">193.17</div>
         </div>
     </div>
-    <button class="checkout">
-        <a href="checkout.php">Checkout</a>
-    </button>
+    <button class="checkout" id="checkoutBtn">Checkout</button>
 </div>
 <p>
     <?php
@@ -127,7 +106,6 @@ if (isset($_SESSION["cart"])) {
     ?>
 </p>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
 <script>
     $(document).ready(function () {
         // Load cart contents
@@ -157,8 +135,24 @@ if (isset($_SESSION["cart"])) {
             $("#products").append(elem);
         }
 
+        // Checkout button handler
+        $("#checkoutBtn").on("click", function () {
+            var loggedIn = '<?php echo $_SESSION["logged_in"] ?>';
+            // Go to payment page if user is logged in
+            //alert("User logged in: " + loggedIn);
+            if (loggedIn === "1") {
+                window.location.href = "payment.php";
+            }
+            // Otherwise go to login
+            else {
+                window.location.href = "login.php";
+            }
+
+        });
+
         console.log(cart);
 
+        // START OF cart.js code
         /* Set rates + misc */
         var taxRate = 0.08;
         var shippingRate = 15.00;
@@ -169,17 +163,10 @@ if (isset($_SESSION["cart"])) {
             updateQuantity(this);
         });
 
-// $('.product-quantity input').change( function() {
-//   updateQuantity(this);
-// });
 
         $('#products').on('click', '.product-removal button', function () {
             removeItem(this);
         });
-
-// $('.product-removal button').click( function() {
-//   removeItem(this);
-// });
 
         /* Recalculate cart */
         function recalculateCart() {

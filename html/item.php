@@ -4,27 +4,42 @@
   <meta charset="utf-8">
   <title>Item Details</title>
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <!--<link href="css/custom.css" rel="stylesheet" type="text/css">-->
+  <link href="css/animate.css" rel="stylesheet">
   <link href="css/item.css" rel="stylesheet" type="text/css">
- </head>
-
+</head>
+  <style>
+body {
+    background-color: #eee;
+}
+h2 {
+    padding: 10%;
+}
+#item {
+    margin-top: -10%;
+    padding-top: 20px;
+}
+#item h3 {
+    color: #666;
+}
+#item img {
+    max-width: 100%;
+    min-width: 200px;
+    height: auto;
+}
+</style>
 <body>
-<p>
-  <?php
-    include_once('header.php');    
-?>
-</p>
+  <div><a class="navbar-brand animated shake" href="products.php"><img src="images/VF2.png" alt="VF logo" width="40"></a> </div>
+  <h2>Item Details</h2>
   <div id="item">
     <div class="row">
-      <div class="col-xs-4 item-photo"> <img style="min-width:80%;" src="images/JPEG/T-shirt_01.jpg" alt=""> </div>
+      <div class="col-xs-4 item-photo"><img style="min-width:80%;" src="images/JPEG/T-shirt_01.jpg" alt=""></div>
       <div class="col-xs-5" style="border:0px solid #eee">
+        <div class="section">
         <h3>Item 1</h3>
         <h5 style="color:#337ab7">Availability: in stock</h5>
-        <div class="ratings">
-          <p><span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart"></span> &nbsp;115 reviews</p>
-        </div>
         <h6 class="title-price"><small>Price</small></h6>
         <h3 style="margin-top:0px;">US$ 59.99</h3>
+        </div>
         <div class="section">
           <h6 class="title-attr"><small>Color</small></h6>
           <div>
@@ -49,8 +64,8 @@
           </div>
         </div>
         <div class="section">
-          <div> <a href="cart.php" class="btn btn-primary btn-lg"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to Cart</a> </div>
-          <h6><a href="#"><span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span> Write a review</a></h6>
+          <div><a href="cart.php" class="btn btn-danger btn-lg"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Add to Cart</a></div>
+          <h6><a href="#"><span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span>Write a review</a></h6>
         </div>
       </div>
       <div class="col-xs-10">
@@ -74,12 +89,12 @@
       </div>
     </div>
   </div>
-</div>    
-<p>
-<?php
+  </div>
+  <p>
+    <?php
     include_once('footer.php');
 ?>
 </p>
-  <script src="js/item.js"></script>
+<script src="js/item.js"></script>
 </body>
 </html>

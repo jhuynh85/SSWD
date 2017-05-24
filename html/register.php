@@ -47,6 +47,40 @@
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" class="form-control input-md" placeholder="Email Address" tabindex="4" required>
                 </div>
+                
+                <div class="form-group">
+            <label for="address"> Address</label>
+            <input type="address" name="address" id="address" class="form-control input-md" tabindex="5" required />
+          </div>
+         
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="form-group">
+            <label for="city">City</label>
+            <input type="city" name="city" class="form-control" tabindex="6" required />
+          </div>
+          </div>
+           <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="form-group">
+            <label for="state">State</label>
+            <input type="state" name="state" class="form-control" tabindex="7" required />
+          </div>
+          </div>
+          </div>
+           <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="form-group">
+            <label for="zip">Zip / Postal Code</label>
+            <input type="zip" name="zip_code" class="form-control" tabindex="8" required />
+          </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="phone" name="phone_number" class="form-control" tabindex="9" required />
+          </div>
+          </div>
+          </div>
 
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-6">

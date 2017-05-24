@@ -54,7 +54,8 @@ label {
     color: #aaa;
 }
 .shopping-cart {
-    margin: -45px auto 0;
+    margin: -50px auto 0;
+    width: 80%;
 }
 /* Column headers */
 .column-labels label {
