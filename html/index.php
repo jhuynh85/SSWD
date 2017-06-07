@@ -35,7 +35,7 @@ include_once('setLogInState.php');
 <div id="vf">
     <div class="col-lg-9 col-md-10 col-sm-10">
         <h1>Welcome to VF World!</h1>
-        <h3>VF stands for lo<span>V</span>e <span>F</span>ashion</h3>
+        <h3>VF stands for Lo<span>V</span>e <span>F</span>ashion</h3>
         <h4>We provide the best designed products and the best services:</h4>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non nibh sit amet urna aliquet tristique.
             Aenean blandit consequat lobortis. Suspendisse luctus, risus non scelerisque sodales, nibh lacus hendrerit

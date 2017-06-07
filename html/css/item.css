@@ -47,50 +47,29 @@ li.active {
     padding-top: 5px;
     color: black;
 }
-.btn-minus, .btn-plus {
-    cursor: pointer;
-    font-size: 7px;
-    display: flex;
-    align-items: center;
-    padding: 5px;
-    border: 1px solid gray;
-    border-radius: 2px;
-    border-right: 0px;
-}
-/*.btn-plus {
-		cursor: pointer;
-		font-size: 7px;
-		display: flex;
-		align-items: center;
-		padding: 5px;
-		border: 1px solid gray;
-		border-radius: 2px;
-		border-left: 0px;
-}*/
-
-
 
 div.section > div {
     width: 100%;
     display: inline-flex;
 }
-div.section > div > input {
-    margin: 0px;
-    padding-left: 5px;
-    font-size: 10px;
-    padding-right: 5px;
-    max-width: 18%;
-    text-align: center;
+
+input[type=radio] {
+	display:none;
+	margin:10px;
 }
-.attr, .attr2 {
+input[type=radio] + label {
     cursor: pointer;
     margin-right: 5px;
     height: 20px;
     font-size: 10px;
-    padding: 4px;
+    padding: 2px 7px 0px 7px;
     border: 1px solid gray;
     border-radius: 2px;
 }
-.attr:active, .attr2:active {
-    border: 1px solid orange;
+.size > input[type=radio]:checked + label {
+	background-image: none;
+	background-color:#d0d0d0;
+}
+.color > input[type=radio]:not(:checked) + label {
+	color: transparent;
 }

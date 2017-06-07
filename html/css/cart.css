@@ -54,7 +54,7 @@ label {
     color: #aaa;
 }
 .shopping-cart {
-    margin: -50px auto 0;
+    margin: 0 auto;
     width: 80%;
 }
 /* Column headers */
@@ -132,7 +132,14 @@ label {
 .checkout:hover {
     background-color: #36F;
 }
-
+.checkout a, .checkout a:hover {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.5em;
+}
+.checkout a:hover {
+    font-weight: 600;
+}
 /* Make adjustments for tablet */
 @media screen and (max-width: 650px) {
 .shopping-cart {

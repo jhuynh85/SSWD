@@ -1,66 +1,73 @@
 <!doctype html>
 <html>
-    <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login</title>
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/animate.css" rel="stylesheet">
-  <link href="css/custom.css" rel="stylesheet" type="text/css">
-  <style type="text/css">
-body {
-    margin-top: 100px;
-}
-.navbar-brand {
-    margin-top: -80px;
-}
-label {
-    font-size: 1.3em;
-    margin-top: 20px;
-}
-#loader {
-    position: absolute;
-    bottom: 10%;
-    left: 40%;
-    background-image: url('images/ellipsis.svg');
-    width: 198px;
-    height: 198px;
-}
-</style>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        body {
+            margin-top: 100px;
+        }
+
+        .navbar-brand {
+            margin-top: -80px;
+        }
+
+        label {
+            font-size: 1.3em;
+            margin-top: 20px;
+        }
+
+        #loader {
+            position: absolute;
+            bottom: 10%;
+            left: 40%;
+            background-image: url('images/ellipsis.svg');
+            width: 198px;
+            height: 198px;
+        }
+    </style>
 </head>
 
-    <body>
-  <div><a class="navbar-brand animated shake" href="products.php"><img src="images/VF2.png" alt="VF logo" width="40"></a> </div>
-  <h2>Please Login to Check Out</h2>
-  <div id="login">
-        <form action="#" method="POST">
-      <label for="username">Username</label>
-      <input type="text" class="form-control" name="username" id="username" placeholder="Enter your Username"
+<body>
+<div><a class="navbar-brand animated shake" href="products.php"><img src="images/VF2.png" alt="VF logo" width="40"></a>
+</div>
+<h2>Please Login to Check Out</h2>
+<div id="login">
+    <form action="#" method="POST">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" name="username" id="username" placeholder="Enter your Username"
                required>
-      <br>
-      <label for="password">Password</label>
-      <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password"
+        <br>
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password"
                required>
-      <br>
-      <p>
+        <br>
+        <p>
             <button type="button" class="btn btn-danger btn-lg" id="login_button">Login</button>
             <a href="messageForgot.php" target="_blank">Forgot Password?</a></p>
     </form>
-        <br>
-        <div> New To VF.com? <a href="register.php" class="btn btn-danger">Register</a></div>
-      </div>
-  <div id="loader"></div>
-  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-  <?php
+    <br>
+    <div> New To VF.com? <a href="register.php" class="btn btn-danger">Register</a></div>
+</div>
+<div id="loader"></div>
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<?php
 // Get lastPage session variable
-session_start();
+$status = session_status();
+if ($status == PHP_SESSION_NONE) {
+    session_start();
+}
 if (isset($_SESSION["lastPage"])) {
     $uri = $_SESSION["lastPage"];
 } else {
     $uri = "index.php";
 }
 ?>
-  <script type="text/javascript">
+<script type="text/javascript">
     $(document).ready(function () {
         // Hide loader image
         $("#loader").hide();
@@ -100,8 +107,8 @@ if (isset($_SESSION["lastPage"])) {
         });
     });
 </script>
-  <p>
-        <?php
+<p>
+    <?php
     include_once('footer.php');
     ?>
 </p>

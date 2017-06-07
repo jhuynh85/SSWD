@@ -1,0 +1,145 @@
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+  background-color: #eee;
+}
+#item {
+  width: 80%;
+  margin: 5% auto;
+}
+#item h2 {
+  padding: 10%;
+}
+#item h3 {
+  color: #666;
+}
+.ratings {
+  width: 300px;
+  margin: 0 0 20px;
+  padding: 0;
+}
+.item-photo {
+  float: left;
+  border-right: 1px solid #f6f6f6;
+  padding: 20px 40px;
+  margin: 0 40px;
+}
+.item-photo img {
+  max-width: 100%;
+  height: auto;
+}
+.menu-items {
+  margin: 5% auto 0;
+  border-bottom: 2px groove #ccc;
+}
+.menu-items ul {
+  list-style-type: none;
+  font-size: 1.4em;
+  font-weight: 600;
+  display: inline-flex;
+}
+.menu-items li {
+  margin-right: 10%;
+  cursor: pointer;
+}
+.menu-items li.active {
+  border-bottom: 3px solid silver;
+}
+.menu-items a {
+  text-decoration: none;
+}
+.menu-items a:hover {
+  color: #666;
+  text-decoration: none;
+}
+.top {
+  position: fixed;
+  bottom: 6%;
+  right: 1%;
+}
+.top a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 400;
+}
+.top a:hover {
+  font-weight: 600;
+}
+.section {
+  width: 240px;
+  margin-left: -15px;
+  padding: 5px 15px;
+  background: #f9f9f9;
+}
+.material-icons {
+  padding: 0 5px 0 0;
+}
+.title-price {
+  margin-top: 10px;
+  margin-bottom: 0px;
+  color: black;
+}
+.title-attr {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 5px;
+  color: black;
+}
+.btn-minus, .btn-plus {
+  cursor: pointer;
+  font-size: 7px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border: 1px solid gray;
+  border-radius: 2px;
+  border-right: 0px;
+}
+.btn-plus {
+  cursor: pointer;
+  font-size: 7px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border: 1px solid gray;
+  border-radius: 2px;
+  border-left: 0px;
+}
+div.section>div {
+  width: 100%;
+  display: inline-flex;
+}
+div.section>div>input {
+  padding: 5px;
+  font-size: 10px;
+  max-width: 18%;
+  text-align: center;
+}
+.attr, .attr2 {
+  cursor: pointer;
+  margin: 5px 5px 0 0;
+  height: 22px;
+  font-size: 10px;
+  padding: 0 5px 5px 6px;
+  border: 1px solid gray;
+  border-radius: 2px;
+}
+input[type="number"] {
+  margin: 5px 0;
+  padding-left: 5px;
+  border-radius: 3px;
+}
+.attr:hover, .attr2:hover, input[type="number"]:hover {
+  border: 1px solid orange;
+}
+.textpart {
+  width: 94%;
+  margin: 0 auto;
+  padding: 15% 0;
+}
+.textpart p {
+  padding: 5px 10px 0;
+}
+.textpart ul {
+  padding: 0 30px;
+}

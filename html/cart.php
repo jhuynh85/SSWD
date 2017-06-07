@@ -10,7 +10,7 @@
         }
 
         .shopping-cart {
-            margin: -2% auto 0;
+            margin: 2% auto 0;
             width: 80%;
         }
 
@@ -38,35 +38,77 @@
 
 <body>
 <?php
-session_start();
+
+require 'stdlib.php';
 include_once('header.php');
+session_start();
 
-// Populate test shopping cart
-$_SESSION["cart"] = array(
-    array(
-        "productName" => "T-shirt_01",
-        "productID" => "1",
-        "quantity" => "2",
-        "listPrice" => "49.99",
-        "description" => "Test description 1",
-        "imagePath" => "images/JPEG/T-shirt_01.jpg"
-    ),
-    array(
-        "productName" => "T-shirt_02",
-        "productID" => "2",
-        "quantity" => "3",
-        "listPrice" => "39.99",
-        "description" => "Test description 2",
-        "imagePath" => "images/JPEG/T-shirt_02.jpg"
-    )
-);
+$sessionID = session_id();
+$productID = $_POST['productID'];
+$listPrice = $_POST['listPrice'];
+$productName = $_POST['productName'];
+$imagePath = $_POST['imagePath'];
+$color = $_POST['color'];
+$size = $_POST['size'];
+$quantity = $_POST['quantity'];
 
-// Get cart session variable
-if (isset($_SESSION["cart"])) {
-    $cart = $_SESSION["cart"];
-} else {
-    $cart = [];
+$added = false;
+
+if ($productID != null){
+    $added = true;
 }
+
+//echo $sessionID." ".$productID." ". $color." ". $size." ". $quantity;
+
+// Store item in cart table
+
+    try {
+        $db = new DB(); //CREATE INSTANCE OF DB CLASS
+
+        // Retrieve cart contents
+        $query = "SELECT * FROM cartItems WHERE sessionID=:sessionID";
+        $arrayParams = array(':sessionID' => $sessionID);
+        $cart = $db->PDOquery($query, $arrayParams, true);
+
+        if ($added) {
+
+            // Search productID, if not found then insert
+            $query = "SELECT * FROM cartItems WHERE sessionID=:sessionID AND productID=:productID";
+            $arrayParams = array(':sessionID' => $sessionID, ':productID' => $productID);
+            $results = $db->PDOquery($query, $arrayParams, true);
+
+            //echo $results[0];
+
+            if (count($results) > 0) {
+                if ($results[0] != false) {
+                    echo "Updating item";
+                    // Item already exists, get and update quantity
+                    $quantity += $results[0]['quantity'];
+
+                    $query = "UPDATE cartItems SET quantity=:quantity WHERE sessionID=:sessionID AND productID=:productID";
+                    $arrayParams = array(':quantity' => $quantity, ':sessionID' => $sessionID, ':productID' => $productID);
+                    $db->PDOquery($query, $arrayParams, false);
+                }
+            } // Insert new item
+            else {
+                echo "Inserting new item!";
+                $query = "INSERT INTO cartItems (sessionID, productID, productName, imagePath, listPrice, quantity) 
+                  values (:sessionID, :productID, :productName, :imagePath, :listPrice, :quantity)";
+
+                $arrayParams = array(':sessionID' => $sessionID,
+                    ':productID' => $productID,
+                    ':productName' => $productName,
+                    ':imagePath' => $imagePath,
+                    ':listPrice' => $listPrice,
+                    ':quantity' => $quantity);
+
+                $db->PDOquery($query, $arrayParams, false);
+            }
+        }
+    } catch (Exception $error) {
+        echo $error->getMessage();
+    }
+
 ?>
 <div class="shopping-cart">
     <h1>Shopping Cart</h1>
@@ -78,8 +120,7 @@ if (isset($_SESSION["cart"])) {
         <label class="product-removal">Remove</label>
         <label class="product-line-price">Total</label>
     </div>
-    <div id="products">
-    </div>
+    <div id="products"></div>
     <div class="totals">
         <div class="totals-item">
             <label>Subtotal</label>
@@ -110,6 +151,7 @@ if (isset($_SESSION["cart"])) {
     $(document).ready(function () {
         // Load cart contents
         var cart = JSON.parse('<?php echo json_encode($cart) ?>');
+        console.log(cart);
 
         // Loop through cart and print out each item
         for (var i in cart) {

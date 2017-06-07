@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: sans-serif;
+    background-color: #eee;
+    color: #666;
+    line-height: 1.4;
+}
+p {
+    text-align: center;
+    padding: 15px;
+}
+#topImg {
+    background: url(../images/bg03.jpg) no-repeat center center;
+    background-size: cover;
+    height: 25em;
+    margin-top: -7.5em;
+}
+#contact {
+    width: 90%;
+    min-width: 25em;
+    margin: 5em auto;
+    background-color: #fff;
+    border: 4px inset #CCC;
+    border-radius: 6px;
+    box-shadow: 4px 4px 6px #666;
+}
+#info {
+    width: 90%;
+    margin: 0 auto;
+    min-width: 20em;
+}
+#map {
+    position: relative;
+    padding-bottom: 60%;
+    height: 0;
+    overflow: hidden;
+    margin: 2em auto;
+}
+#map iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+#comment {
+    width: 90%;
+    margin: 5em auto 0;
+    color: #000;
+}
+span.city {
+    padding-left: 6.9em;
+}
+span.material-icons {
+    padding: 0 7px;
+    vertical-align: bottom;
+}
+.socicon {
+    color: blue;
+    font-size: 1.5em;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.socicon:hover {
+    color: orange;
+    font-weight: bold;
+}
+#container, #table {
+    width: 80%;
+    min-width: 25em;
+    margin: 0 auto;
+    padding: 40px 20px 0;
+    background-color: #000;
+}
+#table {
+    padding-bottom: 40px;
+}
+#datatable {
+    width: 100%;
+    margin: 0 auto;
+    background-color: #FFC;
+}
+#datatable th {
+    padding: .5em;
+}
+#datatable td {
+    text-align: center;
+}
+.clearfix {
+    clear: both;
+}
+h1, h2 {
+    color: #900 !important;
+    margin: 20px 0 10px !important;
+}
+h2 {
+    text-align: left !important;
+    margin: 60px 0 0!important;
+}
+input[type="text"], textarea {
+    width: 80% !important;
+    padding: 5px;
+    margin: 15px 0 5px !important;
+    border-radius: 3px;
+    -moz-border-radius: 5px;
+}
+input[type="submit"] {
+    width: 10em !important;
+    font-size: 1.1em;
+    font-weight: 600;
+    padding: 10px 0 5px;
+    background-color: #999;
+    border-radius: 3px;
+    -moz-border-radius: 5px;
+}
+input[type="submit"]:hover {
+    background-color: #666;
+    color: #fff;
+    cursor: pointer;
+}
+@media screen and (min-width:700px) {
+#contact {
+    float: left;
+    width: 35%;
+    margin: 5em 1% 0 4%;
+}
+#graph {
+    float: left;
+    width: 55%;
+    margin: 5em 2% 5em 3%;
+}
+#comment {
+    width: 60%;
+    margin: 2% auto;
+    padding: 2% 5%;
+    background: url(../images/bg04.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+.comtext {
+    background: rgba(255,255,255,0.7);
+    width: 80%;
+    min-width: 20em;
+    min-height: 10%;
+}
+input[type="submit"] {
+    font-size: 1.4em;
+    background-color: #333;
+    color: #fff;
+}
+input[type="submit"]:hover {
+    color: #900;
+}
+}

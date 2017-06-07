@@ -91,7 +91,6 @@
             <h2 style="color:#900;">Featured Products</h2>
 
             <div class="row">
-
                 <?php foreach ($products as $product) :
                     $id = $product['productID'];
                     $name = $product['productName'];
@@ -101,7 +100,7 @@
                     $url = 'item.php?productID=' . $id;
                     ?>
                     <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail"><img src=<?php echo $imagePath; ?> alt="">
+                        <div class="thumbnail"><img src=<?php echo $imagePath; ?> alt="" height="400" width="400">
                             <div class="caption">
                                 <h4 class="pull-right"><?php echo('$' . $listPrice); ?></h4>
                                 <h4><a href="<?php echo $url ?>"><?php echo $name; ?></a></h4>
