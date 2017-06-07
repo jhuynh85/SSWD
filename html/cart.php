@@ -168,7 +168,7 @@ try {
                     type: "number",
                     value: cart[i].quantity,
                     min: "1"
-                }));
+                }).attr("productID", cart[i].productID));
             var removeBtn = $("<div>").addClass("product-removal")
                 .append($("<button>").addClass("remove-product").text("Remove").attr("productID", cart[i].productID));
             console.log("ProductID: "+cart[i].productID);
@@ -202,6 +202,7 @@ try {
         /* Assign actions */
         $('#products').on('change', '.product-quantity input', function () {
             updateQuantity(this);
+            updateItem($(this).attr("productID"), $(this).val());
         });
 
 
@@ -273,7 +274,16 @@ try {
         function removeFromCart(pid){
             console.log("Removing "+pid);
             var sessID = '<?php echo $sessionID; ?>';
-            $.post("cart_functions.php", {productID: pid, sessionID: sessID})
+            $.post("cart_functions.php", {productID: pid, sessionID: sessID, type: "remove"})
+                .done(function(data){
+                    console.log(data);
+                });
+        }
+
+        function updateItem(pid, quantity){
+            console.log("Quantity: "+quantity);
+            var sessID = '<?php echo $sessionID; ?>';
+            $.post("cart_functions.php", {productID: pid, sessionID: sessID, quantity: quantity, type: "update"})
                 .done(function(data){
                     console.log(data);
                 });

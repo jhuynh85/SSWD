@@ -7,16 +7,21 @@
  */
 require 'stdlib.php';
 
+$type = $_POST['type'];
 $productID = $_POST['productID'];
 $sessionID = $_POST['sessionID'];
+$quantity = $_POST['quantity'];
 
-removeFromCart($productID, $sessionID);
+if ($type == 'remove') {
+    removeFromCart($productID, $sessionID);
+} else {
+    updateQuantity($productID, $sessionID, $quantity);
+}
 
 function removeFromCart($pid, $sessionID)
 {
     try {
         $db = new DB(); //CREATE INSTANCE OF DB CLASS
-
 
         //Delete item from cart
         $query = "DELETE FROM cartItems WHERE sessionID=:sessionID AND productID=:productID";
@@ -29,9 +34,18 @@ function removeFromCart($pid, $sessionID)
     }
 }
 
-function updateItem($pid, $quantity)
+function updateQuantity($pid, $sessionID, $quantity)
 {
+    try {
+        $db = new DB(); //CREATE INSTANCE OF DB CLASS
 
+        //Update quantity in cart
+        $query = "UPDATE cartItems SET quantity=:quantity WHERE sessionID=:sessionID AND productID=:productID";
+        $arrayParams = array(':quantity' => $quantity, ':sessionID' => $sessionID, ':productID' => $pid);
+        $db->PDOquery($query, $arrayParams, false);
+    } catch (Exception $error) {
+        echo $error->getMessage();
+    }
 }
 
 ?>
