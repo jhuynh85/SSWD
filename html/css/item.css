@@ -22,13 +22,53 @@ li.active {
     max-width: 100%;
     height: auto;
 }
+hr {
+ display: block;
+ border: 2px inset #CCC;
+ margin: 5em auto 0;
+ width: 100%;
+}
 .menu-items {
+	margin:5% auto 0;
     list-style-type: none;
     font-size: 1.1em;
     font-weight: 600;
     display: inline-flex;
-    margin: 40px 0 0 40px;
-    padding: 0;
+}
+.menu-items ul {
+  list-style-type: none;
+  font-size: 1.4em;
+  font-weight: 600;
+  display: inline-flex;
+  margin-left: 20px;
+  margin-bottom: 0px;
+}
+.menu-items li {
+  margin-right: 10%;
+  cursor: pointer;
+}
+.menu-items li.active {
+  border-bottom: 3px solid silver;
+}
+.menu-items a {
+  text-decoration: none;
+}
+.menu-items a:hover {
+  color: #666;
+  text-decoration: none;
+}
+.top {
+  position: fixed;
+  bottom: 6%;
+  right: 1%;
+}
+.top a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 400;
+}
+.top a:hover {
+  font-weight: 600;
 }
 .section {
     width: 200px;
@@ -72,4 +112,20 @@ input[type=radio] + label {
 }
 .color > input[type=radio]:not(:checked) + label {
 	color: transparent;
+}
+
+.textpart {
+  width: 94%;
+  margin: 0 auto;
+  padding: 15% 0;
+}
+.textpart p {
+  padding: 5px 10px 0;
+}
+.textpart ul {
+  padding: 0 30px;
+}
+#part1 {
+  border-top: 1px solid #999;
+  margin-top: 0;
 }

@@ -122,24 +122,35 @@ label {
 .totals .totals-item-total {
     font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
 }
+.shopping-cart {
+    margin: 2% auto 0;
+    width: 80%;
+}
+.shopping-cart h1 {
+    margin: 0 0 50px;
+}
 .checkout {
     float: right;
     margin-top: 40px;
     padding: 10px 30px;
-    background-color: #39F;
+    background-color: #000080;
     border-radius: 4px;
 }
 .checkout:hover {
-    background-color: #36F;
+    background-color:#800000 ;
 }
 .checkout a, .checkout a:hover {
     text-decoration: none;
+}
+#checkoutBtn {
+    cursor: pointer;
     color: #fff;
     font-size: 1.5em;
 }
-.checkout a:hover {
-    font-weight: 600;
+#checkoutBtn:hover {
+    font-weight: #600;
 }
+
 /* Make adjustments for tablet */
 @media screen and (max-width: 650px) {
 .shopping-cart {

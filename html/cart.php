@@ -54,7 +54,7 @@ $quantity = $_POST['quantity'];
 
 $added = false;
 
-if ($productID != null){
+if ($productID != null) {
     $added = true;
 }
 
@@ -62,52 +62,52 @@ if ($productID != null){
 
 // Store item in cart table
 
-    try {
-        $db = new DB(); //CREATE INSTANCE OF DB CLASS
+try {
+    $db = new DB(); //CREATE INSTANCE OF DB CLASS
 
-        // Retrieve cart contents
-        $query = "SELECT * FROM cartItems WHERE sessionID=:sessionID";
-        $arrayParams = array(':sessionID' => $sessionID);
-        $cart = $db->PDOquery($query, $arrayParams, true);
+    if ($added) {
 
-        if ($added) {
+        // Search productID, if not found then insert
+        $query = "SELECT * FROM cartItems WHERE sessionID=:sessionID AND productID=:productID";
+        $arrayParams = array(':sessionID' => $sessionID, ':productID' => $productID);
+        $results = $db->PDOquery($query, $arrayParams, true);
 
-            // Search productID, if not found then insert
-            $query = "SELECT * FROM cartItems WHERE sessionID=:sessionID AND productID=:productID";
-            $arrayParams = array(':sessionID' => $sessionID, ':productID' => $productID);
-            $results = $db->PDOquery($query, $arrayParams, true);
+        //echo $results[0];
 
-            //echo $results[0];
+        if (count($results) > 0) {
+            if ($results[0] != false) {
+                echo "Updating item";
+                // Item already exists, get and update quantity
+                $quantity += $results[0]['quantity'];
 
-            if (count($results) > 0) {
-                if ($results[0] != false) {
-                    echo "Updating item";
-                    // Item already exists, get and update quantity
-                    $quantity += $results[0]['quantity'];
-
-                    $query = "UPDATE cartItems SET quantity=:quantity WHERE sessionID=:sessionID AND productID=:productID";
-                    $arrayParams = array(':quantity' => $quantity, ':sessionID' => $sessionID, ':productID' => $productID);
-                    $db->PDOquery($query, $arrayParams, false);
-                }
-            } // Insert new item
-            else {
-                echo "Inserting new item!";
-                $query = "INSERT INTO cartItems (sessionID, productID, productName, imagePath, listPrice, quantity) 
-                  values (:sessionID, :productID, :productName, :imagePath, :listPrice, :quantity)";
-
-                $arrayParams = array(':sessionID' => $sessionID,
-                    ':productID' => $productID,
-                    ':productName' => $productName,
-                    ':imagePath' => $imagePath,
-                    ':listPrice' => $listPrice,
-                    ':quantity' => $quantity);
-
+                $query = "UPDATE cartItems SET quantity=:quantity WHERE sessionID=:sessionID AND productID=:productID";
+                $arrayParams = array(':quantity' => $quantity, ':sessionID' => $sessionID, ':productID' => $productID);
                 $db->PDOquery($query, $arrayParams, false);
             }
+        } // Insert new item
+        else {
+            echo "Inserting new item!";
+            $query = "INSERT INTO cartItems (sessionID, productID, productName, imagePath, listPrice, quantity) 
+                  values (:sessionID, :productID, :productName, :imagePath, :listPrice, :quantity)";
+
+            $arrayParams = array(':sessionID' => $sessionID,
+                ':productID' => $productID,
+                ':productName' => $productName,
+                ':imagePath' => $imagePath,
+                ':listPrice' => $listPrice,
+                ':quantity' => $quantity);
+
+            $db->PDOquery($query, $arrayParams, false);
         }
-    } catch (Exception $error) {
-        echo $error->getMessage();
     }
+
+    // Retrieve cart contents
+    $query = "SELECT * FROM cartItems WHERE sessionID=:sessionID";
+    $arrayParams = array(':sessionID' => $sessionID);
+    $cart = $db->PDOquery($query, $arrayParams, true);
+} catch (Exception $error) {
+    echo $error->getMessage();
+}
 
 ?>
 <div class="shopping-cart">
@@ -124,19 +124,19 @@ if ($productID != null){
     <div class="totals">
         <div class="totals-item">
             <label>Subtotal</label>
-            <div class="totals-value" id="cart-subtotal">164.97</div>
+            <div class="totals-value" id="cart-subtotal">0.00</div>
         </div>
         <div class="totals-item">
             <label>Tax (8%)</label>
-            <div class="totals-value" id="cart-tax">13.20</div>
+            <div class="totals-value" id="cart-tax">0.00</div>
         </div>
         <div class="totals-item">
             <label>Shipping</label>
-            <div class="totals-value" id="cart-shipping">15.00</div>
+            <div class="totals-value" id="cart-shipping">0.00</div>
         </div>
         <div class="totals-item totals-item-total">
             <label>Grand Total</label>
-            <div class="totals-value" id="cart-total">193.17</div>
+            <div class="totals-value" id="cart-total">0.00</div>
         </div>
     </div>
     <button class="checkout" id="checkoutBtn">Checkout</button>
@@ -170,7 +170,8 @@ if ($productID != null){
                     min: "1"
                 }));
             var removeBtn = $("<div>").addClass("product-removal")
-                .append($("<button>").addClass("remove-product").text("Remove"));
+                .append($("<button>").addClass("remove-product").text("Remove").attr("productID", cart[i].productID));
+            console.log("ProductID: "+cart[i].productID);
             var linePrice = $("<div>").addClass("product-line-price").text(amt);
 
             elem.append(image, details, price, quantity, removeBtn, linePrice);
@@ -192,8 +193,6 @@ if ($productID != null){
 
         });
 
-        console.log(cart);
-
         // START OF cart.js code
         /* Set rates + misc */
         var taxRate = 0.08;
@@ -208,6 +207,7 @@ if ($productID != null){
 
         $('#products').on('click', '.product-removal button', function () {
             removeItem(this);
+            removeFromCart($(this).attr("productID"));
         });
 
         /* Recalculate cart */
@@ -239,6 +239,8 @@ if ($productID != null){
             });
         }
 
+        recalculateCart();
+
         /* Update quantity */
         function updateQuantity(quantityInput) {
             /* Calculate line price */
@@ -265,6 +267,16 @@ if ($productID != null){
                 productRow.remove();
                 recalculateCart();
             });
+        }
+
+        // Remove item from cart
+        function removeFromCart(pid){
+            console.log("Removing "+pid);
+            var sessID = '<?php echo $sessionID; ?>';
+            $.post("cart_functions.php", {productID: pid, sessionID: sessID})
+                .done(function(data){
+                    console.log(data);
+                });
         }
     });
 </script>

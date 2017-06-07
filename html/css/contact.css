@@ -52,7 +52,7 @@ p {
     color: #000;
 }
 span.city {
-    padding-left: 6.9em;
+    padding-left: 6.25em;
 }
 span.material-icons {
     padding: 0 7px;
@@ -144,6 +144,10 @@ input[type="submit"]:hover {
     width: 80%;
     min-width: 20em;
     min-height: 10%;
+     
+}
+.comtext h2{
+    padding:2% 0 !important;
 }
 input[type="submit"] {
     font-size: 1.4em;
