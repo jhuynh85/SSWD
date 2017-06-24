@@ -3,37 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Shopping Cart</title>
-    <link rel="stylesheet" href="css/cart.css">
-    <style type="text/css">
-        #checkoutBtn {
-            cursor: pointer;
-        }
-
-        .shopping-cart {
-            margin: 2% auto 0;
-            width: 80%;
-        }
-
-        .shopping-cart h1 {
-            margin: 0 0 50px;
-        }
-
-        .checkout a, .checkout a:hover {
-            text-decoration: none;
-            color: #fff;
-            font-size: 1.5em;
-        }
-
-        .checkout a:hover {
-            font-weight: 600;
-        }
-
-        @media screen and (max-width: 500px) {
-            .shopping-cart {
-                margin-top: -40%;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/cart.css">    
 </head>
 
 <body>

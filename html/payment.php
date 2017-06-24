@@ -9,7 +9,7 @@
 <body>
   <div id="pay">
   <div> <a href="cart.php" id="review">Review Order</a> <a href="cart.php"><img src="images/cart2.png" alt="" title="Shopping Cart" width="30"></a> </div>
-  <form method="post" action=" ">
+  <form method="post" action="payment_done.php">
     <div class="row">
       <h1>Check Out</h1>
       <h3>After you complete your payment, you will receive an email to confirm your order immediately.</h3>
@@ -48,7 +48,7 @@
       <div class="form-group">
         <div class="payment"> <strong>Expiration Date</strong> </div>
         <div>
-          <select class="form-control" name="month">
+          <select class="form-control" name="month" required>
             <option value="">Month</option>
             <option value="01">01</option>
             <option value="02">02</option>
@@ -65,7 +65,7 @@
           </select>
         </div>
         <div>
-          <select class="form-control" name="year">
+          <select class="form-control" name="year" required>
             <option value="">Year</option>
             <option value="2017">2017</option>
             <option value="2018">2018</option>

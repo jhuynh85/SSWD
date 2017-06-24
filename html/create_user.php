@@ -5,6 +5,11 @@ $first_name = $_POST['first_name'];
 $last_name = $_POST['last_name'];
 $user_name = $_POST['user_name'];
 $email = $_POST['email'];
+$address = $_POST['address'];
+$city = $_POST['city'];
+$state = $_POST['state'];
+$zip_code = $_POST['zip_code'];
+$phone_number = $_POST['phone_number'];
 $pass = $_POST['password'];
 
 $hash_cost_log2 = 8;
@@ -43,14 +48,19 @@ try{
 
     if ($status != 2 && $status != 3) {
         //Get data from DB
-        $query = "INSERT INTO users (userName, password, firstName, lastName, emailAddress) 
-		values (:username, :password, :firstname, :lastname, :email)";
+        $query = "INSERT INTO users (userName, password, firstName, lastName, emailAddress, address, city, state, zip, phone) 
+		values (:username, :password, :firstname, :lastname, :email, :address, :city, :state, :zip, :phone)";
 
         $arrayParams = array(':username' => $user_name,
             ':password' => $hasher->HashPassword($pass),
             ':firstname' => $first_name,
             ':lastname' => $last_name,
-            ':email' => $email);
+            ':email' => $email,
+            ':address' => $address,
+            ':city' => $city,
+            ':state' => $state,
+            ':zip' => $zip_code,
+            ':phone' => $phone_number);
 
         $results = (int)$db->PDOquery($query, $arrayParams, false);
 

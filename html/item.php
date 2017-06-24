@@ -135,8 +135,10 @@ try {
                         <?php $checked=""; endforeach; ?>
                     </div>
 
-                </div>              
-                <?php        }; ?>
+                </div>                            
+                <?php } else { ?>
+                    <input type="hidden" name="color" value=null>
+               <?php  } ; ?>
 
                <?php   if (!empty($sizes)) { ?>             
                 <div class="section">
@@ -151,8 +153,10 @@ try {
                     	<?php $checked=""; endforeach; ?>
                     </div>
                 </div>
-                <?php        }; ?>
-
+                <?php } else { ?>
+                    <input type="hidden" name="size" value=null>
+               <?php  } ; ?>
+               
                 <div class="section">
                     <h6 class="title-attr">
                         <small>Quantity</small>

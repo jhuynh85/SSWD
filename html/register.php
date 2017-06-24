@@ -60,19 +60,19 @@ body {
               </div>
           <div class="form-group">
                 <label for="address"> Address</label>
-                <input type="address" name="address" id="address" class="form-control input-md" tabindex="5" required />
+                <input type="text" name="address" id="address" class="form-control input-md" tabindex="5" required />
               </div>
           <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6">
               <div class="form-group">
                     <label for="city">City</label>
-                    <input type="city" name="city" class="form-control" tabindex="6" required />
+                    <input type="text" name="city" class="form-control" tabindex="6" required />
                   </div>
             </div>
                 <div class="col-xs-12 col-sm-6 col-md-6">
               <div class="form-group">
                     <label for="state">State</label>
-                    <input type="state" name="state" class="form-control" tabindex="7" required />
+                    <input type="text" name="state" class="form-control" tabindex="7" required />
                   </div>
             </div>
               </div>
@@ -80,13 +80,13 @@ body {
                 <div class="col-xs-12 col-sm-6 col-md-6">
               <div class="form-group">
                     <label for="zip">Zip / Postal Code</label>
-                    <input type="zip" name="zip_code" class="form-control" tabindex="8" required />
+                    <input type="text" name="zip_code" class="form-control" tabindex="8" required />
                   </div>
             </div>
                 <div class="col-xs-12 col-sm-6 col-md-6">
               <div class="form-group">
                     <label for="phone">Phone Number</label>
-                    <input type="phone" name="phone_number" class="form-control" tabindex="9" required />
+                    <input type="tel" name="phone_number" class="form-control" tabindex="9" required />
                   </div>
             </div>
               </div>
@@ -94,27 +94,27 @@ body {
                 <div class="col-xs-12 col-sm-6 col-md-6">
               <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password" class="form-control input-md" tabindex="5" required>
+                    <input type="password" name="password" id="password" class="form-control input-md" tabindex="10" required>
                   </div>
             </div>
                 <div class="col-xs-12 col-sm-6 col-md-6">
               <div class="form-group">
                     <label for="password_confirmation">Confirm Password</label>
-                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-md" tabindex="6" required>
+                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-md" tabindex="11" required>
                   </div>
             </div>
               </div>
           <div class="row">
                 <div class="col-xs-4 col-sm-3 col-md-3"> <span class="button-checkbox">
-                  <button type="button" class="btn btn-danger" data-color="info" tabindex="7">I Agree</button>
+                  <button type="button" class="btn btn-danger" data-color="info" tabindex="12">I Agree</button>
                   <input type="checkbox" name="t_and_c" id="t_and_c" class="hidden"  value="1" required>
                   </span> </div>
-                <div class="col-xs-8 col-sm-9 col-md-9">By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="terms.php" target="_blank" style="color:red;">Terms and Conditions</a> set out by this site, including our Cookie Use. </div>
+                <div class="col-xs-8 col-sm-9 col-md-9">By checking <span class="label label-primary" style="background:#d9534f";>I Agree</span> on the left and then clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="terms.php" target="_blank" style="color:red;">Terms and Conditions</a> set out by this site, including our Cookie Use. </div>
               </div>
           <hr class="colorgraph">
           <div class="row">
                 <div class="col-xs-12 col-md-6">
-              <input type="submit" id="register_button" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7">
+              <input type="submit" id="register_button" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="13">
             </div>
                 <div class="col-xs-12 col-md-6"><a href="login.php" class="btn btn-success btn-block btn-lg">Login</a></div>
               </div>
@@ -124,9 +124,6 @@ body {
     </div>
         <!-- Modal -->
         
-        <div class="modal-footer">
-      <button type="button" class="btn btn-primary" data-dismiss="modal">I Agree</button>
-    </div>
       </div>
   <!-- /.modal-content -->
   </div>
